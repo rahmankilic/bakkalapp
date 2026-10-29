@@ -1,0 +1,34 @@
+@BakkalApp_HostAddress = http://localhost:5169
+
+### f5 yaparak projeyi test ediyoruz veya yukarıdan calıştırarak bunlar management deki gibi fronted kısmını yapmıyor sadece istedigi 
+## gönder diyerek panelde test ediyoruz
+# son ekledigimiz düzenledigimiz bakkalcontroller parametresinde ki kodlar (yapay zekadan alındı )geçici RAM a kaydetmek yerine 
+# kalıcı olarak SQL veritabanına kaydediyor.
+
+
+
+
+
+
+### 1. Tüm Ürünleri Getir
+GET {{BakkalApp_HostAddress}}/api/bakkal
+Accept: application/json
+
+### 2. Yeni Ürün Ekle (Örn: Cips)
+POST {{BakkalApp_HostAddress}}/api/bakkal
+Content-Type: application/json
+
+{
+  "ad": "karpuz",
+  "fiyat": 25,
+  "stok": 30
+}
+
+### 3. Satış Yap (1 Numaralı Ürünün Stokunu 2 Düş)
+PUT {{BakkalApp_HostAddress}}/api/bakkal/1/satis-yap?adet=2
+
+### 4. Fiyat Güncelle (3 Numaralı Ürünün Fiyatını 35 TL Yap)
+PUT {{BakkalApp_HostAddress}}/api/bakkal/3/fiyat-guncelle?yeniFiyat=35
+
+### 5. Ürün Sil (1 Numaralı Ürünü Sil)
+DELETE {{BakkalApp_HostAddress}}/api/bakkal/4
